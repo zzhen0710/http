@@ -1,0 +1,134 @@
+ <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>登录 · 极简 HTTP</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    overflow: hidden;
+  }
+  /* 背景漂浮光斑 */
+  body::before, body::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: .5;
+    animation: float 8s ease-in-out infinite;
+  }
+  body::before {
+    width: 400px; height: 400px;
+    background: #ff6b9d;
+    top: -100px; left: -100px;
+  }
+  body::after {
+    width: 350px; height: 350px;
+    background: #4facfe;
+    bottom: -80px; right: -80px;
+    animation-delay: -4s;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-30px); }
+  }
+  .card {
+    position: relative;
+    z-index: 1;
+    background: rgba(255,255,255,.95);
+    backdrop-filter: blur(10px);
+    padding: 44px 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.3);
+    width: 340px;
+    animation: slideUp .6s cubic-bezier(.16,1,.3,1);
+  }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  h2 {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 26px;
+    margin-bottom: 28px;
+    letter-spacing: 2px;
+  }
+  h2::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 2px;
+    margin: 12px auto 0;
+  }
+  .input-group {
+    position: relative;
+    margin-bottom: 18px;
+  }
+  .input-group input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid #e8e8e8;
+    border-radius: 12px;
+    font-size: 15px;
+    outline: none;
+    transition: all .25s;
+    background: #fafafa;
+  }
+  .input-group input:focus {
+    border-color: #667eea;
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(102,126,234,.15);
+  }
+  button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all .25s;
+    margin-top: 6px;
+    box-shadow: 0 8px 20px rgba(102,126,234,.4);
+  }
+  button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(102,126,234,.55);
+  }
+  button:active { transform: translateY(0); }
+  .tip {
+    text-align: center;
+    color: #aaa;
+    font-size: 12px;
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h2>登 录</h2>
+    <form action="/login">
+      <div class="input-group">
+        <input name="username" placeholder="请输入用户名" autocomplete="off">
+      </div>
+      <div class="input-group">
+        <input name="password" type="password" placeholder="请输入密码">
+      </div>
+      <button>登 录</button>
+    </form>
+    <p class="tip">账号 = 密码 即可登录成功</p>
+  </div>
+</body>
+</html>

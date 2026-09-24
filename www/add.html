@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>加法计算器</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0ba360 0%, #3cba92 100%);
+    overflow: hidden;
+  }
+  body::before, body::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: .5;
+    animation: float 9s ease-in-out infinite;
+  }
+  body::before {
+    width: 420px; height: 420px;
+    background: #f6d365;
+    top: -120px; right: -120px;
+  }
+  body::after {
+    width: 360px; height: 360px;
+    background: #00f2fe;
+    bottom: -100px; left: -100px;
+    animation-delay: -4.5s;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50%      { transform: translateY(-35px) scale(1.05); }
+  }
+  .card {
+    position: relative;
+    z-index: 1;
+    background: rgba(255,255,255,.96);
+    backdrop-filter: blur(10px);
+    padding: 44px 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.25);
+    width: 380px;
+    text-align: center;
+    animation: slideUp .6s cubic-bezier(.16,1,.3,1);
+  }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  h2 {
+    color: #2c3e50;
+    font-size: 24px;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+  }
+  h2::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(90deg, #0ba360, #3cba92);
+    border-radius: 2px;
+    margin: 12px auto 0;
+  }
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 26px;
+  }
+  .row input {
+    width: 100px;
+    padding: 14px;
+    border: 2px solid #e8e8e8;
+    border-radius: 12px;
+    font-size: 18px;
+    text-align: center;
+    outline: none;
+    transition: all .25s;
+    background: #fafafa;
+  }
+  .row input:focus {
+    border-color: #0ba360;
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(11,163,96,.15);
+  }
+  .op {
+    font-size: 24px;
+    color: #0ba360;
+    font-weight: 700;
+  }
+  button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #0ba360, #3cba92);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all .25s;
+    box-shadow: 0 8px 20px rgba(11,163,96,.35);
+  }
+  button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(11,163,96,.5);
+  }
+  button:active { transform: translateY(0); }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h2>加法计算器</h2>
+    <form action="/add" method="post">
+      <div class="row">
+        <input name="data1" type="number" placeholder="数1">
+        <span class="op">+</span>
+        <input name="data2" type="number" placeholder="数2">
+      </div>
+      <button>计 算</button>
+    </form>
+  </div>
+</body>
+</html>

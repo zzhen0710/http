@@ -1,0 +1,4 @@
+build/
+thttpd.out
+*.o
+*.out
