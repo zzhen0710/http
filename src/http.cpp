@@ -1,6 +1,16 @@
-#include <utility.h>
 #include "http.h"
 #include "custom.h"
+
+#include <cstdio>           // printf, fprintf, snprintf, sscanf, perror
+#include <cstring>          // strcmp, strcpy, strlen, strchr, strncasecmp
+#include <cstdlib>          // atoi
+#include <unistd.h>         // close, read
+#include <fcntl.h>          // open, O_RDONLY
+
+#include <sys/socket.h>     // socket, bind, listen, accept, recv, send, setsockopt
+#include <netinet/in.h>     // sockaddr_in, INADDR_ANY, htons
+#include <sys/stat.h>       // fstat, struct stat
+#include <sys/sendfile.h>   // sendfile
 
 // ============================================================
 //  内部函数（仅本文件使用，加 static，其他文件不可见）

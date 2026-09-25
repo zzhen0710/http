@@ -1,5 +1,15 @@
-#include <utility.h>
 #include "http.h"
+
+#include <cstdio>       // printf, fprintf, perror
+#include <cstdlib>      // atoi
+#include <cstring>      // strerror
+#include <cstdint>      // intptr_t
+
+#include <unistd.h>     // close
+#include <pthread.h>    // pthread_create, pthread_detach, pthread_t
+#include <sys/socket.h> // accept
+#include <netinet/in.h> // sockaddr_in, ntohs
+#include <arpa/inet.h>  // inet_ntoa
 
 void* do_business(void* arg) {
     int deal_fd = (int)(intptr_t)arg; // 指针到整型必须显示强转

@@ -1,6 +1,7 @@
-#include <utility.h>
 #include "custom.h"
 #include "http.h"
+#include <cstring>   // strcmp, strlen
+#include <cstdio>    // sscanf, snprintf
 
 // ============================================================
 //  路由定义 + 内部函数（仅本文件使用，加 static）
